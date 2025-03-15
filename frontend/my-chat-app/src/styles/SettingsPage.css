@@ -1,0 +1,343 @@
+/* SettingsPage.css - Styles pour la page de paramètres */
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-content: #ffffff;
+    --secondary-color: #f59e0b;
+    --accent-color: #10b981;
+    --neutral-color: #6b7280;
+    --bg-color: #f3f4f6;
+    --bg-alt: #e5e7eb;
+    --card-bg: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-normal: all 0.3s ease;
+  }
+  
+  /* Layout principal */
+  .settings-container {
+    min-height: 100vh;
+    max-width: 64rem; /* équivalent à max-w-5xl */
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-top: 5rem; /* équivalent à pt-20 */
+  }
+  
+  .settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* équivalent à space-y-6 */
+  }
+  
+  /* En-tête de section */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* équivalent à gap-1 */
+  }
+  
+  .section-title {
+    font-size: 1.125rem; /* équivalent à text-lg */
+    font-weight: 600; /* équivalent à font-semibold */
+    color: var(--text-primary);
+    margin: 0;
+  }
+  
+  .section-description {
+    font-size: 0.875rem; /* équivalent à text-sm */
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 0;
+  }
+  
+  /* Grille de thèmes */
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* équivalent à grid-cols-4 */
+    gap: 0.5rem; /* équivalent à gap-2 */
+  }
+  
+  @media (min-width: 640px) {
+    .themes-grid {
+      grid-template-columns: repeat(6, 1fr); /* équivalent à sm:grid-cols-6 */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .themes-grid {
+      grid-template-columns: repeat(8, 1fr); /* équivalent à md:grid-cols-8 */
+    }
+  }
+  
+  /* Bouton de thème */
+  .theme-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.375rem; /* équivalent à gap-1.5 */
+    padding: 0.5rem; /* équivalent à p-2 */
+    border-radius: 0.5rem; /* équivalent à rounded-lg */
+    transition: background-color 0.3s ease; /* équivalent à transition-colors */
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .theme-button:hover {
+    background-color: rgba(229, 231, 235, 0.5); /* équivalent à hover:bg-base-200/50 */
+  }
+  
+  .theme-button.active {
+    background-color: var(--bg-alt); /* équivalent à bg-base-200 */
+  }
+  
+  /* Aperçu de couleurs du thème */
+  .theme-preview {
+    position: relative;
+    height: 2rem; /* équivalent à h-8 */
+    width: 100%; /* équivalent à w-full */
+    border-radius: 0.375rem; /* équivalent à rounded-md */
+    overflow: hidden;
+  }
+  
+  .theme-colors {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* équivalent à grid-cols-4 */
+    gap: 1px; /* équivalent à gap-px */
+    padding: 0.25rem; /* équivalent à p-1 */
+  }
+  
+  .color-primary, .color-secondary, .color-accent, .color-neutral {
+    border-radius: 0.25rem; /* équivalent à rounded */
+  }
+  
+  .color-primary {
+    background-color: var(--primary-color);
+  }
+  
+  .color-secondary {
+    background-color: var(--secondary-color);
+  }
+  
+  .color-accent {
+    background-color: var(--accent-color);
+  }
+  
+  .color-neutral {
+    background-color: var(--neutral-color);
+  }
+  
+  .theme-name {
+    font-size: 0.6875rem; /* équivalent à text-[11px] */
+    font-weight: 500; /* équivalent à font-medium */
+    white-space: nowrap; /* équivalent à truncate + w-full */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center; /* équivalent à text-center */
+    color: var(--text-primary);
+  }
+  
+  /* Section de prévisualisation */
+  .preview-title {
+    font-size: 1.125rem; /* équivalent à text-lg */
+    font-weight: 600; /* équivalent à font-semibold */
+    margin-bottom: 0.75rem; /* équivalent à mb-3 */
+    color: var(--text-primary);
+  }
+  
+  .preview-container {
+    border-radius: 0.75rem; /* équivalent à rounded-xl */
+    border: 1px solid var(--border-color); /* équivalent à border border-base-300 */
+    overflow: hidden;
+    background-color: var(--card-bg); /* équivalent à bg-base-100 */
+    box-shadow: var(--shadow-lg); /* équivalent à shadow-lg */
+  }
+  
+  .preview-wrapper {
+    padding: 1rem; /* équivalent à p-4 */
+    background-color: var(--bg-alt); /* équivalent à bg-base-200 */
+  }
+  
+  .preview-chat {
+    max-width: 32rem; /* équivalent à max-w-lg */
+    margin: 0 auto; /* équivalent à mx-auto */
+  }
+  
+  /* Chat UI */
+  .chat-ui {
+    background-color: var(--card-bg); /* équivalent à bg-base-100 */
+    border-radius: 0.75rem; /* équivalent à rounded-xl */
+    box-shadow: var(--shadow-sm); /* équivalent à shadow-sm */
+    overflow: hidden;
+  }
+  
+  /* En-tête du chat */
+  .chat-header {
+    padding: 0.75rem 1rem; /* équivalent à px-4 py-3 */
+    border-bottom: 1px solid var(--border-color); /* équivalent à border-b border-base-300 */
+    background-color: var(--card-bg); /* équivalent à bg-base-100 */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* équivalent à gap-3 */
+  }
+  
+  .user-avatar {
+    width: 2rem; /* équivalent à w-8 */
+    height: 2rem; /* équivalent à h-8 */
+    border-radius: 9999px; /* équivalent à rounded-full */
+    background-color: var(--primary-color); /* équivalent à bg-primary */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-content); /* équivalent à text-primary-content */
+    font-weight: 500; /* équivalent à font-medium */
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-name {
+    font-weight: 500; /* équivalent à font-medium */
+    font-size: 0.875rem; /* équivalent à text-sm */
+    margin: 0;
+    color: var(--text-primary);
+  }
+  
+  .user-status {
+    font-size: 0.75rem; /* équivalent à text-xs */
+    color: var(--text-secondary); /* équivalent à text-base-content/70 */
+    opacity: 0.7;
+    margin: 0;
+  }
+  
+  /* Zone de messages */
+  .chat-messages {
+    padding: 1rem; /* équivalent à p-4 */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* équivalent à space-y-4 */
+    min-height: 200px; /* équivalent à min-h-[200px] */
+    max-height: 200px; /* équivalent à max-h-[200px] */
+    overflow-y: auto; /* équivalent à overflow-y-auto */
+    background-color: var(--card-bg); /* équivalent à bg-base-100 */
+  }
+  
+  /* Message */
+  .message-wrapper {
+    display: flex;
+  }
+  
+  .message-wrapper.sent {
+    justify-content: flex-end; /* équivalent à justify-end */
+  }
+  
+  .message-wrapper.received {
+    justify-content: flex-start; /* équivalent à justify-start */
+  }
+  
+  .message-bubble {
+    max-width: 80%; /* équivalent à max-w-[80%] */
+    border-radius: 0.75rem; /* équivalent à rounded-xl */
+    padding: 0.75rem; /* équivalent à p-3 */
+    box-shadow: var(--shadow-sm); /* équivalent à shadow-sm */
+  }
+  
+  .message-bubble.sent {
+    background-color: var(--primary-color); /* équivalent à bg-primary */
+    color: var(--primary-content); /* équivalent à text-primary-content */
+  }
+  
+  .message-bubble.received {
+    background-color: var(--bg-alt); /* équivalent à bg-base-200 */
+    color: var(--text-primary);
+  }
+  
+  .message-text {
+    font-size: 0.875rem; /* équivalent à text-sm */
+    margin: 0;
+  }
+  
+  .message-time {
+    font-size: 0.625rem; /* équivalent à text-[10px] */
+    margin-top: 0.375rem; /* équivalent à mt-1.5 */
+    margin-bottom: 0;
+  }
+  
+  .message-time.sent {
+    color: var(--primary-content); /* équivalent à text-primary-content/70 */
+    opacity: 0.7;
+  }
+  
+  .message-time.received {
+    color: var(--text-secondary); /* équivalent à text-base-content/70 */
+    opacity: 0.7;
+  }
+  
+  /* Zone de saisie */
+  .chat-input-area {
+    padding: 1rem; /* équivalent à p-4 */
+    border-top: 1px solid var(--border-color); /* équivalent à border-t border-base-300 */
+    background-color: var(--card-bg); /* équivalent à bg-base-100 */
+  }
+  
+  .input-wrapper {
+    display: flex;
+    gap: 0.5rem; /* équivalent à gap-2 */
+  }
+  
+  .message-input {
+    flex: 1;
+    height: 2.5rem; /* équivalent à h-10 */
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem; /* équivalent à text-sm */
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+  }
+  
+  .message-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+  }
+  
+  .send-button {
+    height: 2.5rem; /* équivalent à h-10 min-h-0 */
+    padding: 0 1rem;
+    background-color: var(--primary-color); /* équivalent à btn-primary */
+    color: var(--primary-content);
+    border: none;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  /* Pour les thèmes dynamiques */
+  [data-theme] .color-primary,
+  [data-theme] .color-secondary,
+  [data-theme] .color-accent,
+  [data-theme] .color-neutral {
+    transition: background-color 0.3s ease;
+  }
