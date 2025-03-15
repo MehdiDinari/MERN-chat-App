@@ -1,0 +1,252 @@
+/* LoginPage.css - Beautiful styling for the login page */
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-light: rgba(79, 70, 229, 0.1);
+    --primary-light-hover: rgba(79, 70, 229, 0.2);
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --background-color: #ffffff;
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --transition-normal: all 0.3s ease;
+  }
+  
+  /* Main layout */
+  .login-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  @media (min-width: 1024px) {
+    .login-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Form side */
+  .login-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .login-form-container {
+      padding: 3rem;
+    }
+  }
+  
+  .login-form-wrapper {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+  
+  .login-space-y {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* Logo section */
+  .login-logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .login-logo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .login-logo-icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+  }
+  
+  .login-logo-content:hover .login-logo-icon-wrapper {
+    background-color: var(--primary-light-hover);
+  }
+  
+  .login-logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-color);
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--text-primary);
+  }
+  
+  .login-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+  
+  /* Form elements */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .label-text {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .input-wrapper {
+    position: relative;
+  }
+  
+  .input-icon-left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-left: 0.75rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+  
+  .input-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: var(--text-secondary);
+    opacity: 0.4;
+  }
+  
+  .input-field {
+    width: 100%;
+    height: 2.75rem;
+    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: var(--transition-normal);
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+  
+  .input-field::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Button styles */
+  .login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: 2.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+  }
+  
+  .login-button:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+  }
+  
+  .login-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Footer signup link */
+  .login-footer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .login-footer-text {
+    color: var(--text-secondary);
+  }
+  
+  .login-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-normal);
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Auth image pattern (right side) styling will depend on the component implementation */
+  .auth-image-container {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .auth-image-container {
+      display: block;
+    }
+  }

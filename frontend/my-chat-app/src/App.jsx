@@ -10,7 +10,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
 import { useThemeStore } from "./store/useThemeStore";
 import { useEffect } from "react";
-
+import "./App.css"
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 

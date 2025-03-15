@@ -1,3 +1,4 @@
+/* Variables et styles de base */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Styles des liens */
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,19 +24,28 @@ a:hover {
   color: #535bf2;
 }
 
+/* CORRECTION: Modification des styles du body pour utiliser tout l'écran */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  /* Suppression de display: flex et place-items: center qui causaient le problème */
+}
+
+/* Ajout pour garantir que l'application prend toute la largeur */
+#root {
+  width: 100%;
   min-height: 100vh;
 }
 
+/* Styles pour les titres */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Styles des boutons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,6 +65,31 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Styles pour l'application Chatty */
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Style pour la sidebar */
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  height: 100%;
+  background-color: #1a1a1a;
+  overflow-y: auto;
+}
+
+/* Style pour le conteneur principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Mode clair */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -64,5 +100,17 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+  .sidebar {
+    background-color: #f0f0f0;
+    border-right: 1px solid #e0e0e0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    min-width: 80px;
   }
 }
