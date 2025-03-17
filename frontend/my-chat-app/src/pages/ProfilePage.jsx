@@ -12,7 +12,6 @@ const ProfilePage = () => {
     if (!file) return;
 
     const reader = new FileReader();
-
     reader.readAsDataURL(file);
 
     reader.onload = async () => {
@@ -31,7 +30,7 @@ const ProfilePage = () => {
             <p className="profile-subtitle">Your profile information</p>
           </div>
 
-          {/* avatar upload section */}
+          {/* Avatar upload section */}
           <div className="avatar-section">
             <div className="avatar-container">
               <img
@@ -41,9 +40,9 @@ const ProfilePage = () => {
               />
               <label
                 htmlFor="avatar-upload"
-                className={`avatar-upload-button ${isUpdatingProfile ? "uploading" : ""}`}
+                className={`avatar-upload-label ${isUpdatingProfile ? "uploading" : ""}`}
               >
-                <Camera className="avatar-upload-icon" />
+                <Camera className="camera-icon" />
                 <input
                   type="file"
                   id="avatar-upload"
@@ -59,10 +58,10 @@ const ProfilePage = () => {
             </p>
           </div>
 
-          <div className="info-sections">
+          <div className="info-section">
             <div className="info-field">
               <div className="field-label">
-                <User className="field-icon" />
+                <User className="info-icon" />
                 Full Name
               </div>
               <p className="field-value">{authUser?.fullName}</p>
@@ -70,7 +69,7 @@ const ProfilePage = () => {
 
             <div className="info-field">
               <div className="field-label">
-                <Mail className="field-icon" />
+                <Mail className="info-icon" />
                 Email Address
               </div>
               <p className="field-value">{authUser?.email}</p>
@@ -79,14 +78,14 @@ const ProfilePage = () => {
 
           <div className="account-section">
             <h2 className="account-title">Account Information</h2>
-            <div className="account-details">
+            <div className="account-info">
               <div className="account-row">
-                <span>Member Since</span>
-                <span>{authUser.createdAt?.split("T")[0]}</span>
+                <span className="account-label">Member Since</span>
+                <span className="account-value">{authUser.createdAt?.split("T")[0]}</span>
               </div>
               <div className="account-row">
-                <span>Account Status</span>
-                <span className="active-status">Active</span>
+                <span className="account-label">Account Status</span>
+                <span className="status-active">Active</span>
               </div>
             </div>
           </div>

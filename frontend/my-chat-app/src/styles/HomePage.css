@@ -1,505 +1,68 @@
-/* Chatty.css - Styles pour l'application Chatty */
+/* HomePage.css - Styles pour la page principale */
 
-/* Variables de couleurs et styles de base */
+/* Variables */
 :root {
-    --primary-color: #4f46e5;
-    --primary-hover: #4338ca;
-    --bg-color: #f3f4f6;
-    --card-bg: #ffffff;
-    --text-primary: #111827;
-    --text-secondary: #6b7280;
-    --border-color: #e5e7eb;
-    --sidebar-bg: #121212;
-    --sidebar-text: #ffffff;
-    --sidebar-hover: rgba(255, 255, 255, 0.1);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --transition-normal: all 0.3s ease;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --offline-color: #6b7280;
-  }
-  
-  /* Mode sombre */
-  .dark-mode {
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-radius: 0.5rem;
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  :root {
     --bg-color: #111827;
     --card-bg: #1f2937;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
     --border-color: #374151;
-    --sidebar-bg: #0f172a;
-    --sidebar-hover: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Conteneur principal pleine hauteur */
+.home-container {
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+/* Centrage du contenu */
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Carte principale */
+.chat-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 72rem; /* max-w-6xl */
+  height: calc(100vh - 8rem);
+}
+
+/* Conteneur flex pour Sidebar et Chat */
+.card-content {
+  display: flex;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Media queries pour responsive */
+@media (max-width: 768px) {
+  .chat-card {
+    height: calc(100vh - 5rem);
   }
   
-  /* Reset et styles globaux */
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    font-family: system-ui, sans-serif;
+  .content-wrapper {
+    padding-top: 1rem;
   }
-  
-  #root {
-    width: 100%;
-    height: 100vh;
-  }
-  
-  /* Structure principale de l'application */
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--bg-color);
-    transition: var(--transition-normal);
-  }
-  
-  /* Conteneur principal */
-  .main-container {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: calc(100vh - 60px); /* Hauteur totale moins l'en-tête */
-    position: relative;
-  }
-  
-  /* En-tête de l'application */
-  .app-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--sidebar-bg);
-    height: 60px;
-  }
-  
-  /* Logo Chatty */
-  .app-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--sidebar-text);
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .app-logo-icon {
-    color: var(--primary-color);
-  }
-  
-  /* Navigation principale */
-  .app-nav {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  /* Bouton de paramètres */
-  .settings-button, 
-  .profile-button {
-    background: none;
-    border: none;
-    color: var(--sidebar-text);
-    opacity: 0.7;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.375rem;
-    transition: var(--transition-normal);
-  }
-  
-  .settings-button:hover, 
-  .profile-button:hover {
-    background-color: var(--sidebar-hover);
-    opacity: 1;
-  }
-  
-  /* Bouton de déconnexion */
-  .logout-button {
-    background-color: #1a1a1a;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition-normal);
-  }
-  
-  .logout-button:hover {
-    background-color: #333;
-  }
-  
-  /* Sidebar (liste de contacts) */
-  .sidebar {
-    width: 280px;
-    height: 100%;
-    background-color: var(--sidebar-bg);
-    color: var(--sidebar-text);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* En-tête de la sidebar */
-  .sidebar-header {
-    padding: 1rem;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .sidebar-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .sidebar-icon {
-    opacity: 0.7;
-  }
-  
-  /* Filtres de contacts */
-  .contact-filter {
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--sidebar-text);
-    opacity: 0.7;
-  }
-  
-  .contact-filter input[type="checkbox"] {
-    cursor: pointer;
-  }
-  
-  /* Indicateur de contacts en ligne */
-  .online-count {
-    padding: 0 1rem;
-    font-size: 0.75rem;
-    color: var(--sidebar-text);
-    opacity: 0.5;
-  }
-  
-  /* Liste des contacts */
-  .contact-list {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  /* Item de contact */
-  .contact-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    transition: background-color 0.2s ease;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .contact-item:hover {
-    background-color: var(--sidebar-hover);
-  }
-  
-  .contact-item.active {
-    background-color: var(--primary-color);
-  }
-  
-  /* Avatar de contact */
-  .contact-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    margin-right: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  .contact-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Informations de contact */
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .contact-name {
-    font-weight: 500;
-  }
-  
-  .contact-status {
-    font-size: 0.75rem;
-    opacity: 0.7;
-  }
-  
-  /* Indicateurs de statut */
-  .status-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-  }
-  
-  .status-online {
-    background-color: var(--success-color);
-  }
-  
-  .status-away {
-    background-color: var(--warning-color);
-  }
-  
-  .status-offline {
-    background-color: var(--offline-color);
-  }
-  
-  /* Zone de chat principale */
-  .chat-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--card-bg);
-    color: var(--text-primary);
-    overflow: hidden;
-  }
-  
-  /* Message de bienvenue (quand aucun chat n'est sélectionné) */
-  .welcome-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    color: var(--text-secondary);
-    padding: 1rem;
-  }
-  
-  .welcome-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    opacity: 0.7;
-  }
-  
-  .welcome-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .welcome-subtitle {
-    font-size: 0.875rem;
-    max-width: 400px;
-  }
-  
-  /* En-tête de la zone de chat */
-  .chat-header {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  
-  /* Zone des messages */
-  .messages-container {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  
-  /* Zone de saisie de message */
-  .message-input-container {
-    border-top: 1px solid var(--border-color);
-    padding: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  /* Bulles de message */
-  .message-bubble {
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    max-width: 80%;
-    word-break: break-word;
-  }
-  
-  .message-bubble.sent {
-    background-color: var(--primary-color);
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 0.25rem;
-  }
-  
-  .message-bubble.received {
-    background-color: #f3f4f6;
-    color: var(--text-primary);
-    align-self: flex-start;
-    border-bottom-left-radius: 0.25rem;
-  }
-  
-  /* Champ de saisie */
-  .message-input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border-radius: 1.5rem;
-    border: 1px solid var(--border-color);
-    outline: none;
-    transition: var(--transition-normal);
-  }
-  
-  .message-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-  }
-  
-  /* Bouton d'envoi */
-  .send-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition-normal);
-  }
-  
-  .send-button:hover {
-    background-color: var(--primary-hover);
-  }
-  
-  /* Indicateur de frappe */
-  .typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    background-color: #f3f4f6;
-    width: fit-content;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .typing-indicator span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--text-secondary);
-    animation: typing 1s infinite;
-  }
-  
-  .typing-indicator span:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  
-  .typing-indicator span:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes typing {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
-  }
-  
-  @keyframes newMessage {
-    0% { transform: scale(0.95); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease forwards;
-  }
-  
-  .new-message {
-    animation: newMessage 0.3s ease forwards;
-  }
-  
-  /* Scrollbar personnalisée */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 240px;
-    }
-  }
-  
-  @media (max-width: 640px) {
-    .sidebar {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      z-index: 10;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-    
-    .sidebar.active {
-      transform: translateX(0);
-    }
-    
-    .sidebar-toggle {
-      display: block;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      cursor: pointer;
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-    }
-  }
+}

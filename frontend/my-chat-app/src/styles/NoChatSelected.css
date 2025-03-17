@@ -1,0 +1,93 @@
+/* NoChatSelected.css - Styles pour l'écran quand aucune conversation n'est sélectionnée */
+
+/* Variables */
+:root {
+    --primary-color: #4f46e5;
+    --primary-light: rgba(79, 70, 229, 0.1);
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --bg-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Mode sombre */
+  .dark-mode {
+    --primary-color: #6366f1;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --bg-color: rgba(30, 41, 59, 0.5);
+  }
+  
+  /* Conteneur principal */
+  .no-chat-container {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    background-color: var(--bg-color);
+  }
+  
+  /* Conteneur du contenu */
+  .no-chat-content {
+    max-width: 28rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Section de l'icône */
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .icon-wrapper {
+    position: relative;
+  }
+  
+  .icon-background {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
+  }
+  
+  .chat-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary-color);
+  }
+  
+  /* Section de texte */
+  .welcome-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .welcome-subtitle {
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  /* Animation de rebond */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(-20px);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }

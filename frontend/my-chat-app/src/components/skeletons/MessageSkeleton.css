@@ -1,0 +1,103 @@
+/* MessageSkeleton.css - Styles pour le squelette des messages */
+
+/* Variables */
+:root {
+    --skeleton-light: #e5e7eb;
+    --skeleton-dark: #4b5563;
+    --spacing-unit: 1rem;
+    --transition-normal: all 0.3s ease;
+  }
+  
+  /* Conteneur principal */
+  .skeleton-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-unit);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+  }
+  
+  /* Message base */
+  .skeleton-message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+  }
+  
+  /* Alignement des messages */
+  .message-start {
+    align-self: flex-start;
+  }
+  
+  .message-end {
+    align-self: flex-end;
+  }
+  
+  /* Avatar */
+  .skeleton-avatar-container {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0.25rem;
+  }
+  
+  .skeleton-avatar-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .skeleton-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--skeleton-light);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* En-tête du message */
+  .skeleton-message-header {
+    margin-bottom: 0.25rem;
+  }
+  
+  .skeleton-timestamp {
+    height: 1rem;
+    width: 4rem;
+    background-color: var(--skeleton-light);
+    border-radius: 0.25rem;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Bulle du message */
+  .skeleton-bubble-container {
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  .skeleton-bubble {
+    height: 4rem;
+    width: 200px;
+    background-color: var(--skeleton-light);
+    border-radius: 0.5rem;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Animation de pulsation */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Mode sombre */
+  @media (prefers-color-scheme: dark) {
+    .skeleton-avatar,
+    .skeleton-timestamp,
+    .skeleton-bubble {
+      background-color: var(--skeleton-dark);
+    }
+  }

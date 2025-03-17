@@ -21,13 +21,13 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       {/* Left Side - Form */}
-      <div className="login-form-container">
-        <div className="login-form-wrapper login-space-y">
+      <div className="form-side">
+        <div className="form-wrapper form-content">
           {/* Logo */}
-          <div className="login-logo-container">
-            <div className="login-logo-content">
-              <div className="login-logo-icon-wrapper">
-                <MessageSquare className="login-logo-icon" />
+          <div className="logo-container">
+            <div className="logo-content">
+              <div className="logo-icon-wrapper">
+                <MessageSquare className="logo-icon" />
               </div>
               <h1 className="login-title">Welcome Back</h1>
               <p className="login-subtitle">Sign in to your account</p>
@@ -36,17 +36,17 @@ const LoginPage = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="login-form">
-            <div className="form-control">
+            <div className="form-group">
               <label className="form-label">
                 <span className="label-text">Email</span>
               </label>
-              <div className="input-wrapper">
-                <div className="input-icon-left">
-                  <Mail className="input-icon" />
+              <div className="input-container">
+                <div className="input-icon">
+                  <Mail className="icon" />
                 </div>
                 <input
                   type="email"
-                  className="input-field"
+                  className="form-input"
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -54,17 +54,17 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <div className="form-control">
+            <div className="form-group">
               <label className="form-label">
                 <span className="label-text">Password</span>
               </label>
-              <div className="input-wrapper">
-                <div className="input-icon-left">
-                  <Lock className="input-icon" />
+              <div className="input-container">
+                <div className="input-icon">
+                  <Lock className="icon" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="input-field"
+                  className="form-input"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -75,18 +75,18 @@ const LoginPage = () => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="input-icon" />
+                    <EyeOff className="icon" />
                   ) : (
-                    <Eye className="input-icon" />
+                    <Eye className="icon" />
                   )}
                 </button>
               </div>
             </div>
 
-            <button type="submit" className="login-button" disabled={isLoggingIn}>
+            <button type="submit" className="submit-button" disabled={isLoggingIn}>
               {isLoggingIn ? (
                 <>
-                  <Loader2 className="input-icon spinner" />
+                  <Loader2 className="icon spinner" />
                   Loading...
                 </>
               ) : (
@@ -95,10 +95,10 @@ const LoginPage = () => {
             </button>
           </form>
 
-          <div className="login-footer">
-            <p className="login-footer-text">
+          <div className="signup-link-container">
+            <p className="signup-text">
               Don&apos;t have an account?{" "}
-              <Link to="/signup" className="login-link">
+              <Link to="/signup" className="signup-link">
                 Create account
               </Link>
             </p>

@@ -1,37 +1,43 @@
 import { X } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
+import "../styles/ChatHeader.css";
 
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
 
   return (
-    <div className="p-2.5 border-b border-base-300">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+    <div className="chat-header">
+      <div className="header-content">
+        <div className="user-info-container">
           {/* Avatar */}
-          <div className="avatar">
-            <div className="size-10 rounded-full relative">
-              <img src={selectedUser.profilePic || "/avatar.png"} alt={selectedUser.fullName} />
-            </div>
+          <div className="user-avatar">
+            <img 
+              src={selectedUser.profilePic || "/avatar.png"} 
+              alt={selectedUser.fullName} 
+            />
           </div>
 
           {/* User info */}
-          <div>
-            <h3 className="font-medium">{selectedUser.fullName}</h3>
-            <p className="text-sm text-base-content/70">
+          <div className="user-details">
+            <h3 className="user-name">{selectedUser.fullName}</h3>
+            <p className="user-status">
               {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"}
             </p>
           </div>
         </div>
 
         {/* Close button */}
-        <button onClick={() => setSelectedUser(null)}>
-          <X />
+        <button 
+          className="close-button" 
+          onClick={() => setSelectedUser(null)}
+        >
+          <X className="close-icon" />
         </button>
       </div>
     </div>
   );
 };
+
 export default ChatHeader;

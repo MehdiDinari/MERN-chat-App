@@ -1,0 +1,145 @@
+/* SidebarSkeleton.css - Styles pour le squelette de chargement de la sidebar */
+
+/* Variables */
+:root {
+    --border-color: #e5e7eb;
+    --skeleton-base: #e2e8f0;
+    --skeleton-highlight: #f8fafc;
+    --text-primary: #111827;
+    --transition-normal: all 0.2s ease;
+  }
+  
+  /* Mode sombre */
+  .dark-mode {
+    --border-color: #374151;
+    --skeleton-base: #334155;
+    --skeleton-highlight: #475569;
+    --text-primary: #f9fafb;
+  }
+  
+  /* Structure principale */
+  .skeleton-sidebar {
+    height: 100%;
+    width: 5rem; /* 80px */
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-normal);
+  }
+  
+  @media (min-width: 1024px) {
+    .skeleton-sidebar {
+      width: 18rem; /* 288px */
+    }
+  }
+  
+  /* En-tête de la sidebar */
+  .skeleton-header {
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    padding: 1.25rem;
+  }
+  
+  .skeleton-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .contacts-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-primary);
+  }
+  
+  .contacts-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .contacts-label {
+      display: block;
+    }
+  }
+  
+  /* Liste des contacts */
+  .skeleton-contacts-list {
+    overflow-y: auto;
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+  
+  /* Item de contact skeleton */
+  .skeleton-contact-item {
+    width: 100%;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  /* Avatar skeleton */
+  .avatar-container {
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 1024px) {
+    .avatar-container {
+      margin: 0;
+    }
+  }
+  
+  .skeleton-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--skeleton-base);
+    animation: skeleton-pulse 2s infinite ease-in-out;
+  }
+  
+  /* Info utilisateur skeleton */
+  .skeleton-user-info {
+    display: none;
+    text-align: left;
+    min-width: 0;
+    flex: 1;
+  }
+  
+  @media (min-width: 1024px) {
+    .skeleton-user-info {
+      display: block;
+    }
+  }
+  
+  .skeleton-name {
+    height: 1rem;
+    width: 8rem;
+    background-color: var(--skeleton-base);
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    animation: skeleton-pulse 2s infinite ease-in-out;
+  }
+  
+  .skeleton-status {
+    height: 0.75rem;
+    width: 4rem;
+    background-color: var(--skeleton-base);
+    border-radius: 0.25rem;
+    animation: skeleton-pulse 2s infinite ease-in-out;
+  }
+  
+  /* Animation de pulsation pour skeleton */
+  @keyframes skeleton-pulse {
+    0% {
+      background-color: var(--skeleton-base);
+    }
+    50% {
+      background-color: var(--skeleton-highlight);
+    }
+    100% {
+      background-color: var(--skeleton-base);
+    }
+  }

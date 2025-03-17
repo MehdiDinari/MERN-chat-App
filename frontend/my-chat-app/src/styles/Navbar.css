@@ -1,0 +1,155 @@
+/* Navbar.css - Styles pour la barre de navigation */
+
+/* Variables */
+:root {
+    --primary-color: #4f46e5;
+    --primary-light: rgba(79, 70, 229, 0.1);
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-color: #ffffff;
+    --bg-translucent: rgba(255, 255, 255, 0.8);
+    --transition-normal: all 0.3s ease;
+  }
+  
+  /* Mode sombre */
+  .dark-mode {
+    --primary-color: #6366f1;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --bg-color: #1f2937;
+    --bg-translucent: rgba(31, 41, 55, 0.8);
+  }
+  
+  /* Structure de la barre de navigation */
+  .navbar {
+    background-color: var(--bg-translucent);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(8px);
+  }
+  
+  .navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 4rem;
+  }
+  
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  /* Logo et section gauche */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    transition: var(--transition-normal);
+  }
+  
+  .logo-link:hover {
+    opacity: 0.8;
+  }
+  
+  .logo-icon-container {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--primary-color);
+  }
+  
+  .logo-text {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  /* Section droite et boutons */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Styles communs des boutons */
+  .nav-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: var(--transition-normal);
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    background-color: var(--border-color);
+  }
+  
+  .nav-button-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .profile-icon, .logout-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Bouton de déconnexion */
+  .logout-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: var(--transition-normal);
+  }
+  
+  .logout-button:hover {
+    background-color: var(--border-color);
+  }
+  
+  /* Responsive */
+  .button-text {
+    display: none;
+  }
+  
+  @media (min-width: 640px) {
+    .button-text {
+      display: inline;
+    }
+  }

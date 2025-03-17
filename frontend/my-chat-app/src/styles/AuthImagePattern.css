@@ -1,0 +1,83 @@
+/* AuthImagePattern.css - Styles pour le motif d'image d'authentification */
+
+/* Variables */
+:root {
+    --primary-color: #4f46e5;
+    --primary-light: rgba(79, 70, 229, 0.1);
+    --text-primary: #111827;
+    --text-secondary: rgba(107, 114, 128, 0.6);
+    --bg-color: #f3f4f6;
+  }
+  
+  /* Mode sombre */
+  .dark-mode {
+    --primary-color: #6366f1;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --text-primary: #f9fafb;
+    --text-secondary: rgba(209, 213, 219, 0.6);
+    --bg-color: #111827;
+  }
+  
+  /* Conteneur principal */
+  .auth-pattern-container {
+    display: none;
+    background-color: var(--bg-color);
+    padding: 3rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .auth-pattern-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  /* Contenu centré */
+  .auth-pattern-content {
+    max-width: 28rem;
+    text-align: center;
+  }
+  
+  /* Grille de motifs */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Carré de motif */
+  .pattern-square {
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    background-color: var(--primary-light);
+  }
+  
+  /* Animation de pulsation */
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Titre */
+  .auth-pattern-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+  
+  /* Sous-titre */
+  .auth-pattern-subtitle {
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
