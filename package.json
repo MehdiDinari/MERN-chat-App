@@ -1,0 +1,23 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix backend && npm install --prefix frontend/my-chat-app && npm run build --prefix frontend/my-chat-app",
+    "start" : "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MehdiDinari/MERN-chat-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MehdiDinari/MERN-chat-App/issues"
+  },
+  "homepage": "https://github.com/MehdiDinari/MERN-chat-App#readme"
+}
